@@ -6,8 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
-import java.util.Optional;
+import java.util.List;
 
 @SpringBootApplication
 public class DataJpa2Application {
@@ -46,7 +47,39 @@ public class DataJpa2Application {
 
         /*userRepository.deleteById(3);*/
 
+       /* List<User> australia = userRepository.findByCountry("Australia");
+        australia.forEach(user -> {
+            System.out.println(user);
+        });*/
 
+     /*   List<User> userByAge = userRepository.findUserByAge(30);
+        userByAge.forEach(user -> {
+            System.out.println(user);
+        });
+
+     */
+
+        /*List<User> greaterThan = userRepository.findUserByAgeGreaterThan(30);
+        greaterThan.forEach(user -> {
+            System.out.println(user);
+        });*/
+
+      /*  List<User> userByCountryIn = userRepository.findUserByCountryIn(Arrays.asList("America", "Australia"));
+        userByCountryIn.forEach(user -> {
+            System.out.println(user);
+        });*/
+
+        //live in aus age>30
+
+      /*  List<User> australia = userRepository.findUserByCountryAndAgeGreaterThan("Australia", 30);
+        australia.forEach(user -> {
+            System.out.println(user);
+        });*/
+
+        List<User> userByCountryAndAgeAndGender = userRepository.findUserByCountryAndAgeAndGender("Nepal", 20, "Male");
+        userByCountryAndAgeAndGender.forEach(user -> {
+            System.out.println(user);
+        });
 
     }
 
