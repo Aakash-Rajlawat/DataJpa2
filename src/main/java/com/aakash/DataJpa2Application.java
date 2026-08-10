@@ -76,10 +76,21 @@ public class DataJpa2Application {
             System.out.println(user);
         });*/
 
-        List<User> userByCountryAndAgeAndGender = userRepository.findUserByCountryAndAgeAndGender("Nepal", 20, "Male");
+        /*List<User> userByCountryAndAgeAndGender = userRepository.findUserByCountryAndAgeAndGender("Nepal", 20, "Male");
         userByCountryAndAgeAndGender.forEach(user -> {
             System.out.println(user);
-        });
+        });*/
+
+
+        /*List<User> users = userRepository.getAllUserHql();
+        for (User user : users){
+            System.out.println(user);
+        }*/
+
+        List<User> users = userRepository.getAllUserSql();
+        for(User user : users){
+            System.out.println(user);
+        }
 
     }
 
