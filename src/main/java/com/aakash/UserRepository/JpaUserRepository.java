@@ -1,4 +1,7 @@
 package com.aakash.UserRepository;
 
-public interface JpaUserRepository {
+import com.aakash.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface JpaUserRepository extends JpaRepository<User,Integer> {
 }

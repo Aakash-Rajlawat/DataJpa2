@@ -20,4 +20,7 @@ public interface UserRepository extends CrudRepository<User,Integer> {
 
     @Query(value = "select * from user_details",nativeQuery = true)
     List<User> getAllUserSql();
+
+    @Query(value="from User where country=:cname")
+    List<User> getAlLUsersByCountry(String cname);
 }

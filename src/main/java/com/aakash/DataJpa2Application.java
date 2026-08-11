@@ -1,10 +1,12 @@
 package com.aakash;
 
+import com.aakash.UserRepository.JpaUserRepository;
 import com.aakash.UserRepository.UserRepository;
 import com.aakash.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.domain.Sort;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -14,13 +16,32 @@ import java.util.List;
 public class DataJpa2Application {
 
     public static void main(String[] args) {
+
+        //interface object is made by the spring
         ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(DataJpa2Application.class, args);
-        UserRepository userRepository = configurableApplicationContext.getBean(UserRepository.class);
+        JpaUserRepository jpaUserRepository = configurableApplicationContext.getBean(JpaUserRepository.class);
+
+
 
         User u1 = new User(1,"Aakash","Male",20,"Nepal");
         User u2 = new User(2,"Sam","Male",40,"America");
         User u3 = new User(3,"Tom","Male",65,"Australia");
         User u4 = new User(4,"Jerry","Male",35,"Australia");
+        User u5 = new User(5,"Thomas","Male",45,"America");
+        User u6 = new User(6,"Marcus","Male",95,"America");
+        User u7 = new User(7,"Devi","Fe-Male",29,"India");
+        User u8 = new User(8,"Red","Male",51,"America");
+
+
+      /*  List<User> users = jpaUserRepository.saveAll(Arrays.asList(u1,u2,u3,u4,u5,u6,u7,u8));
+        for (User user : users){
+            System.out.println(user);
+        }*/
+
+        List<User> users = jpaUserRepository.findAll(Sort.by("userId","country"));
+        for(User user : users){
+            System.out.println(user);
+        }
 
         /*userRepository.saveAll(Arrays.asList(u1,u2,u3,u4));
 */
@@ -87,11 +108,16 @@ public class DataJpa2Application {
             System.out.println(user);
         }*/
 
-        List<User> users = userRepository.getAllUserSql();
+        /*List<User> users = userRepository.getAllUserSql();
         for(User user : users){
             System.out.println(user);
-        }
+        }*/
 
+
+        /*List<User> whateverNameIWant = userRepository.getAlLUsersByCountry("Australia");
+        for ( User user:whateverNameIWant){
+            System.out.println(user);
+        }*/
     }
 
 }
