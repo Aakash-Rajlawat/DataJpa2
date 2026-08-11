@@ -6,6 +6,8 @@ import com.aakash.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 import java.lang.reflect.Array;
@@ -38,10 +40,16 @@ public class DataJpa2Application {
             System.out.println(user);
         }*/
 
-        List<User> users = jpaUserRepository.findAll(Sort.by("userId","country"));
+        /*int pageSize =2, pageNumber =1;
+        Page<User> userDetail = jpaUserRepository.findAll(Pageable.ofSize(pageSize).withPage(pageNumber-1));
+        for(User user : userDetail){
+            System.out.println(user);
+        }*/
+
+        /*List<User> users = jpaUserRepository.findAll(Sort.by("userId","country"));
         for(User user : users){
             System.out.println(user);
-        }
+        }*/
 
         /*userRepository.saveAll(Arrays.asList(u1,u2,u3,u4));
 */
