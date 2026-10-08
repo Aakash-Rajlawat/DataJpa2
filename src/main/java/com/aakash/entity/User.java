@@ -1,13 +1,19 @@
 package com.aakash.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jdk.jfr.Timestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Component
 @Entity
 @Table(name = "userDetails")
 @Data
@@ -16,6 +22,7 @@ import lombok.NoArgsConstructor;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_Id")
     private Integer userId;
 
@@ -31,6 +38,13 @@ public class User {
     @Column(name = "user_Country")
     private String country;
 
+    @CreationTimestamp
+    @Column(name = "createdDateAndTime" , updatable = false )
+    private LocalDateTime createdDate;
+
+    @UpdateTimestamp
+    @Column(name = "updatedDateAndTime" , insertable = false)
+    private LocalDateTime updatedDateAndTime;
 
 
 }

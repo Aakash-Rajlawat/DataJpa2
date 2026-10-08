@@ -25,14 +25,47 @@ public class DataJpa2Application {
 
 
 
-        User u1 = new User(1,"Aakash","Male",20,"Nepal");
+  /*      User u1 = new User(1,"Aakash","Male",20,"Nepal");
         User u2 = new User(2,"Sam","Male",40,"America");
         User u3 = new User(3,"Tom","Male",65,"Australia");
         User u4 = new User(4,"Jerry","Male",35,"Australia");
         User u5 = new User(5,"Thomas","Male",45,"America");
         User u6 = new User(6,"Marcus","Male",95,"America");
         User u7 = new User(7,"Devi","Fe-Male",29,"India");
-        User u8 = new User(8,"Red","Male",51,"America");
+        User u8 = new User(8,"Red","Male",51,"America");*/
+
+        User u1 = new User();
+        u1.setCountry("Nepal");
+        u1.setAge(19);
+        u1.setUserName("Aakash");
+        u1.setGender("Male");
+
+        User u2 = new User();
+        u2.setCountry("Australia");
+        u2.setAge(29);
+        u2.setUserName("Stacy");
+        u2.setGender("Fe-Male");
+
+        User u3 = new User();
+        u3.setCountry("Quatar");
+        u3.setAge(40);
+        u3.setUserName("Sandeep");
+        u3.setGender("Male");
+
+
+        List<User> usersData = jpaUserRepository.saveAll(Arrays.asList(u1,u2,u3));
+        List<User> userList = jpaUserRepository.findAll();
+
+
+/*        User u9 = new User();
+        u9.setAge(45);
+        u9.setUserName("Astro");
+        u9.setGender("Male");
+        u9.setCountry("NewZealand");
+
+        User saved = jpaUserRepository.save(u9);*/
+
+
 
 
       /*  List<User> users = jpaUserRepository.saveAll(Arrays.asList(u1,u2,u3,u4,u5,u6,u7,u8));
